@@ -1,6 +1,10 @@
 package fr.insalyon.dasi.project.action;
 
+import fr.insalyon.dasi.td1.metier.modele.Client;
+import fr.insalyon.dasi.td1.metier.service.Service;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class AuthentifierClientAction extends Action{
 
@@ -9,20 +13,20 @@ public class AuthentifierClientAction extends Action{
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-//
-//        Service service = new Service();
-//        Client client = service.authentifierClient(login, password);
-//
-//        request.setAttribute("client", client);
-//
-//        // Gestion de la Session: ici, enregistrer l'ID du Client authentifié
-//        HttpSession session = request.getSession();
-//        if (client != null) {
-//            session.setAttribute("idClient", client.getId());
-//        }
-//        else {
-//            session.removeAttribute("idClient");
-//        }
+
+        Service service = new Service();
+        Client client = service.getClientByAuthentication(login, password);
+
+        request.setAttribute("client", client);
+
+        // Gestion de la Session: ici, enregistrer l'ID du Client authentifié
+        HttpSession session = request.getSession();
+        if (client != null) {
+            session.setAttribute("idClient", client.getId());
+        }
+        else {
+            session.removeAttribute("idClient");
+        }
 
     }
 }
