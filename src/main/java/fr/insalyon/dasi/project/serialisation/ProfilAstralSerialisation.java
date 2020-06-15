@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ProfilClientSerialisation extends Serialisation {
+public class ProfilAstralSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
