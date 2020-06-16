@@ -7,6 +7,8 @@ package fr.insalyon.dasi.project.dasi.controller;
 
 import fr.insalyon.dasi.project.action.Action;
 import fr.insalyon.dasi.project.action.AuthentifierClientAction;
+import fr.insalyon.dasi.project.action.GetProfilAstralAction;
+import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
 import fr.insalyon.dasi.td1.dao.JpaUtil;
@@ -68,8 +70,13 @@ public class ActionServlet extends HttpServlet {
                     action = new AuthentifierClientAction();
                     serialisation = new ProfilClientSerialisation();
                     break;
+                case "profil-astral":
+                    action = new GetProfilAstralAction();
+                    serialisation = new ProfilAstralSerialisation();                    
+                    break;
                 case "":
                     break;
+
             }
 
             if (action != null) {
