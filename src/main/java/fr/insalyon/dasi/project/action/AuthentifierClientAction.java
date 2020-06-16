@@ -17,6 +17,7 @@ public class AuthentifierClientAction extends Action{
         Service service = new Service();
         Client client = service.getClientByAuthentication(login, password);
 
+        System.out.println("client trouvé : "+ client);
         request.setAttribute("client", client);
 
         // Gestion de la Session: ici, enregistrer l'ID du Client authentifié

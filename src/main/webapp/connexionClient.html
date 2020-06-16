@@ -2,15 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Librairie Javascript: jQuery (v3.4.1) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <title>Title</title>
 </head>
 <body>
 
 
-<form>
-    <input type="text" placeholder="email">
-    <input type="password" placeholder="mot de passe">
-</form>
+<div class="container justify-content-center">
+
+    <div class="d-flex justify-content-center">
+
+        <form class="border border-primary col-6 mt-10 rounded">
+            <div class="form-group ">
+                <label for="champ-login">Adresse email</label>
+                <input id="champ-login" type="email" class="form-control" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                <label for="champ-password">Mot de passe</label>
+                <input id="champ-password" type="password" class="form-control" aria-describedby="passwordHelp">
+            </div>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-primary mt-10" id="bouton-connexion" href="#" role="button">Connexion</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#bouton-connexion').on('click', function () { // Fonction appelée lors du clic sur le bouton
+
+            console.log("clic sur le bouton de connexion"); // LOG dans Console Javascript
+            //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+
+            // Récupération de la valeur des champs du formulaire
+            let champLogin = $('#champ-login').val();
+            let champPassword = $('#champ-password').val();
+
+            // Appel AJAX
+            $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'connecterClient',
+                    login: champLogin,
+                    password: champPassword
+                },
+                dataType: 'json'
+            })
+                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                    console.log('Response', response); // LOG dans Console Javascript
+                    if (response.connexion) {
+                        //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                        // TODO: afficher les informations du client dans la notification
+                        // Exemple: Connexion de Ada Lovelace (ID 1)
+                        let client = response.client;
+                        //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
+
+                        // aller page suivante
+                    } else {
+                        //$('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                    }
+                })
+                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                    console.log('Error', error); // LOG dans Console Javascript
+                    alert("Erreur lors de l'appel AJAX");
+                })
+                .always(function () { // Fonction toujours appelée
+
+                });
+        });
+    });
+</script>
 
 </body>
 </html>
