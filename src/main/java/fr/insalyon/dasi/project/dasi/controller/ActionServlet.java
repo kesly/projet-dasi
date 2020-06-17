@@ -5,6 +5,7 @@
  */
 package fr.insalyon.dasi.project.dasi.controller;
 
+import fr.insalyon.dasi.project.action.AccueilEmployeAction;
 import fr.insalyon.dasi.project.action.Action;
 import fr.insalyon.dasi.project.action.AuthentifierClientAction;
 import fr.insalyon.dasi.project.action.AuthentifierEmployeAction;
@@ -15,6 +16,7 @@ import fr.insalyon.dasi.project.serialisation.ListerMediumSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilEmployeSerialisation;
+import fr.insalyon.dasi.project.serialisation.PropositionSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
 import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
 import fr.insalyon.dasi.td1.dao.JpaUtil;
@@ -92,6 +94,10 @@ public class ActionServlet extends HttpServlet {
                 case "listerMedium":
                     action = new ListerMediumAction();
                     serialisation = new ListerMediumSerialisation();
+                    break;
+                case "accueilEmploye":
+                    action = new AccueilEmployeAction();
+                    serialisation = new PropositionSerialisation();
                     break;
             }
 
