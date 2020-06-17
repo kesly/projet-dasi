@@ -7,8 +7,10 @@ package fr.insalyon.dasi.project.dasi.controller;
 
 import fr.insalyon.dasi.project.action.Action;
 import fr.insalyon.dasi.project.action.AuthentifierClientAction;
+import fr.insalyon.dasi.project.action.InscriptionClientAction;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
+import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -62,11 +64,13 @@ public class ActionServlet extends HttpServlet {
 
         if (todo != null) {
             switch (todo) {
-                case "connecterClient":
+                case "connexionClient":
                     action = new AuthentifierClientAction();
                     serialisation = new ProfilClientSerialisation();
                     break;
-                case "":
+                case "inscriptionClient":
+                    action = new InscriptionClientAction();
+                    serialisation = new ValidationInscriptionSerialisation();
                     break;
             }
 
