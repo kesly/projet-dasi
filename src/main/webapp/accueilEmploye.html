@@ -39,13 +39,12 @@ and open the template in the editor.
         <script>
             $(document).ready(function() {
                 // Appel AJAX
-                    var idClient = 10;
                     console.log("salut kekes");
                 $.ajax({
                         url: './ActionServlet',
                         method: 'POST',
                         data: {
-                            todo: 'profil-astral'
+                            todo: 'accueilEmploye'
                         },
                         dataType: 'json'
                     })
