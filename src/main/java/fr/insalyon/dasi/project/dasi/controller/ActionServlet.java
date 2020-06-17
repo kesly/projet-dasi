@@ -81,8 +81,10 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new ProfilEmployeSerialisation();
                     break;
                 case "inscriptionClient":
+                    System.out.println("Un autre nom");
                     action = new InscriptionClientAction();
                     serialisation = new ValidationInscriptionSerialisation();
+                    break;
                 case "profil-astral":
                     action = new GetProfilAstralAction();
                     serialisation = new ProfilAstralSerialisation();

@@ -4,6 +4,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <html>
     <head>
         <title>Predict'IF</title>
@@ -57,15 +59,15 @@ and open the template in the editor.
                   <input type="password" name="cmdp" id="cmdp" required>
                 </div>
                 <div>
-                  <input type="submit" id="boutonInscription" value="Valider">
+                  <input type="button" id="boutonInscription" role="button" value="Valider">
                 </div>
               </form>
         </div>
-    </body>
-    <script>
-    $(document).ready(function () {
+        <script>
+        $(document).ready(function () {
         $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
-
+            
+                
             console.log("clic sur le bouton inscription"); // LOG dans Console Javascript
             //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
 
@@ -81,7 +83,7 @@ and open the template in the editor.
             let champ_date = $('#datenaissance').val();
             let champ_commune = $('#commune').val();
 
-            if(mdp.localeCompare(cmdp)!=0){
+            if(champ_mdp !== champ_cmdp){
                alert('mdp différents'); 
             } else {
                 // Appel AJAX
@@ -104,18 +106,7 @@ and open the template in the editor.
                 dataType: 'json'
             })
                 .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                    console.log('Response', response); // LOG dans Console Javascript
-                    if (response.connexion) {
-                        //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
-                        // TODO: afficher les informations du client dans la notification
-                        // Exemple: Connexion de Ada Lovelace (ID 1)
-                        let client = response.client;
-                        //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
-
-                        // aller page suivante
-                    } else {
-                        //$('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
-                    }
+                    console.log('Response', response); // LOG dans Console Javascript     
                 })
                 .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
                     console.log('Error', error); // LOG dans Console Javascript
@@ -130,4 +121,6 @@ and open the template in the editor.
             });
         });
     </script>
+    </body>
+    
 </html>
