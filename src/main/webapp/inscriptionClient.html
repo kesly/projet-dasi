@@ -57,9 +57,77 @@ and open the template in the editor.
                   <input type="password" name="cmdp" id="cmdp" required>
                 </div>
                 <div>
-                  <input type="submit" value="Valider">
+                  <input type="submit" id="boutonInscription" value="Valider">
                 </div>
               </form>
         </div>
     </body>
+    <script>
+    $(document).ready(function () {
+        $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
+
+            console.log("clic sur le bouton inscription"); // LOG dans Console Javascript
+            //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+
+            // Récupération de la valeur des champs du formulaire
+            let champ_mdp = $('#mdp').val();
+            let champ_cmdp = $('#cmdp').val();
+            let champ_prenom = $('#prenom').val();
+            let champ_nom = $('#nom').val();
+            let champ_email = $('#email').val();
+            let champ_telephone = $('#telephone').val();
+            let champ_codePostal = $('#codePostal').val();
+            let champ_adressePostale = $('#adressepostale').val();
+            let champ_date = $('#datenaissance').val();
+            let champ_commune = $('#commune').val();
+
+            if(mdp.localeCompare(cmdp)!=0){
+               alert('mdp différents'); 
+            } else {
+                // Appel AJAX
+                $.ajax({
+                url: './ActionServlet',
+                method: 'POST',
+                data: {
+                    todo: 'inscriptionClient',
+                    mdp : champ_mdp,
+                    cmdp : champ_cmdp,
+                    prenom : champ_prenom,
+                    nom : champ_nom,
+                    email : champ_email,
+                    telephone : champ_telephone,
+                    codePostal : champ_codePostal,
+                    adressePostale : champ_adressePostale,
+                    date : champ_date,
+                    commune : champ_commune
+                },
+                dataType: 'json'
+            })
+                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                    console.log('Response', response); // LOG dans Console Javascript
+                    if (response.connexion) {
+                        //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                        // TODO: afficher les informations du client dans la notification
+                        // Exemple: Connexion de Ada Lovelace (ID 1)
+                        let client = response.client;
+                        //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
+
+                        // aller page suivante
+                    } else {
+                        //$('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                    }
+                })
+                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                    console.log('Error', error); // LOG dans Console Javascript
+                    alert("Erreur lors de l'appel AJAX");
+                })
+                .always(function () { // Fonction toujours appelée
+
+                });
+            }
+            
+            
+            });
+        });
+    </script>
 </html>
