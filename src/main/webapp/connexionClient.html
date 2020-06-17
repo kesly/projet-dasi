@@ -20,6 +20,8 @@
             <fieldset>
                 <legend>Connexion</legend>
 
+                <p id="notification">Veuillez saisir votre identifiant (adresse mail) et votre mot de passe.</p>
+
                 <div class="form-group ">
                     <label for="champ-login">Adresse email</label>
                     <input id="champ-login" type="email" class="form-control" aria-describedby="emailHelp">
@@ -60,7 +62,7 @@
                 url: './ActionServlet',
                 method: 'POST',
                 data: {
-                    todo: 'connecterClient',
+                    todo: 'connexionClient',
                     login: champLogin,
                     password: champPassword
                 },
@@ -73,7 +75,7 @@
                         // TODO: afficher les informations du client dans la notification
                         // Exemple: Connexion de Ada Lovelace (ID 1)
                         let client = response.client;
-                        //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
+                        $('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
 
                         // aller page suivante
                     } else {
