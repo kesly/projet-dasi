@@ -8,11 +8,13 @@ package fr.insalyon.dasi.project.dasi.controller;
 import fr.insalyon.dasi.project.action.Action;
 import fr.insalyon.dasi.project.action.AuthentifierClientAction;
 import fr.insalyon.dasi.project.action.GetProfilAstralAction;
+import fr.insalyon.dasi.project.action.InscriptionClientAction;
 import fr.insalyon.dasi.project.action.ListerMediumAction;
 import fr.insalyon.dasi.project.serialisation.ListerMediumSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
+import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
 import fr.insalyon.dasi.td1.dao.JpaUtil;
 
 import java.io.IOException;
