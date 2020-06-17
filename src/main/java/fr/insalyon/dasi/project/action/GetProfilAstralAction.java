@@ -11,17 +11,25 @@ public class GetProfilAstralAction extends Action{
     @Override
     public void executer(HttpServletRequest request) {
 
-        String idClient = request.getParameter("id");
-
-        System.out.println("###### ID CLIENT: " + idClient);
-        
-        
         Service service = new Service();
         HttpSession session = request.getSession();
         
-//        ProfilAstral profilAstral = service.findClientById(idClient).getProfilAstral();
-
+        Long idClient = (Long) session.getAttribute("idClient");
         
+        
+
+        System.out.println("" + idClient);
+        System.out.println("###### ID CLIENT: " + idClient);
+        ProfilAstral profilAstral = service.findClientById(idClient).getProfilAstral();
+        System.out.println("\n\n###### profil astral: \n");
+        System.out.println("annimal : " + profilAstral.getAnimalTotem() + "\n");
+        System.out.println("couleur : " + profilAstral.getCouleurPorteBonheur() + "\n");
+        System.out.println("signe astro chinois : " + profilAstral.getSigneAstrologiqueChinois() + "\n");
+        System.out.println("signe zodiac : " + profilAstral.getSigneZodiac() + "\n");
+        
+        
+        request.setAttribute("profilAstral", profilAstral);
+
 
     }
 }

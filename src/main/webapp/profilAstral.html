@@ -14,8 +14,6 @@ and open the template in the editor.
 
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- JS, Popper.js, and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     
     </head>
     <body>
@@ -23,13 +21,13 @@ and open the template in the editor.
             <h1>Découvrez votre profil astral</h1>
 
             <p>
-                Signe zodiac:
+                Signe zodiac: <span id="signe-zodiac"></span>
                 <br><br>
-                Signe Astrologique chinois:
+                Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
                 <br><br>
-                Couleur porte bonheur:
+                Couleur porte bonheur: <span id="couleur-porte-bonheur"></span>
                 <br><br>
-                Animal totem: 
+                Animal totem: <span id="animal-totem"></span>
             </p>
 
 
@@ -47,23 +45,21 @@ and open the template in the editor.
                         url: './ActionServlet',
                         method: 'POST',
                         data: {
-                            todo: 'profil-astral',
-                            id: idClient
+                            todo: 'profil-astral'
                         },
                         dataType: 'json'
                     })
                     
                 .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
-                        if (response.connexion) {
-                            //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
-                                // TODO: afficher les informations du client dans la notification
-                                // Exemple: Connexion de Ada Lovelace (ID 1)
-                                var client = response.client;
-                                $('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
-                            } else {
-                                $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
-                            }
+                  
+                                var profilAstral = response.profilAstral;
+                                $('#signe-zodiac').html(profilAstral.signeZodiac);
+
+                                $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
+                                $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
+                                $('#animal-totem').html(profilAstral.animalTotem);
+                   
                         })
                     
                 .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
