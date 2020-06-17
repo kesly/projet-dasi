@@ -7,10 +7,13 @@ package fr.insalyon.dasi.project.dasi.controller;
 
 import fr.insalyon.dasi.project.action.Action;
 import fr.insalyon.dasi.project.action.AuthentifierClientAction;
-import fr.insalyon.dasi.project.action.InscriptionClientAction;
+import fr.insalyon.dasi.project.action.GetProfilAstralAction;
+import fr.insalyon.dasi.project.action.ListerMediumAction;
+import fr.insalyon.dasi.project.serialisation.ListerMediumSerialisation;
+import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
-import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
+import fr.insalyon.dasi.td1.dao.JpaUtil;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,17 +31,17 @@ import javax.servlet.http.HttpSession;
 public class ActionServlet extends HttpServlet {
 
 
-//    @Override
-//    public void init() throws ServletException {
-//        super.init();
-//        JpaUtil.init();
-//    }
-//
-//    @Override
-//    public void destroy() {
-//        JpaUtil.destroy();
-//        super.destroy();
-//    }
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        JpaUtil.init();
+    }
+
+    @Override
+    public void destroy() {
+        JpaUtil.destroy();
+        super.destroy();
+    }
 
 
     /**
@@ -62,6 +65,7 @@ public class ActionServlet extends HttpServlet {
         Action action = null;
         Serialisation serialisation = null;
 
+        System.out.println(todo);
         if (todo != null) {
             switch (todo) {
                 case "connexionClient":
@@ -71,6 +75,13 @@ public class ActionServlet extends HttpServlet {
                 case "inscriptionClient":
                     action = new InscriptionClientAction();
                     serialisation = new ValidationInscriptionSerialisation();
+                case "profil-astral":
+                    action = new GetProfilAstralAction();
+                    serialisation = new ProfilAstralSerialisation();
+                    break;
+                case "listerMedium":
+                    action = new ListerMediumAction();
+                    serialisation = new ListerMediumSerialisation();
                     break;
             }
 
