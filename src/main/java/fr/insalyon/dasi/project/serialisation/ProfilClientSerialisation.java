@@ -30,6 +30,8 @@ public class ProfilClientSerialisation extends Serialisation {
 
             container.add("client", jsonClient);
         }
+        
+        System.out.println("container"+ container);
 
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();

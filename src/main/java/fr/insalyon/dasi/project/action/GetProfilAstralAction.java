@@ -18,7 +18,8 @@ public class GetProfilAstralAction extends Action{
         
         Service service = new Service();
         HttpSession session = request.getSession();
-        
+
+
 //        ProfilAstral profilAstral = service.findClientById(idClient).getProfilAstral();
 
         
