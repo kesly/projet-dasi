@@ -4,123 +4,178 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <html>
     <head>
         <title>Predict'IF</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function formcheck() {
+                var fields = $(".ss-item-required")
+                        .find("select, textarea, input").serializeArray();
+                let required = 0;
+                $.each(fields, function (i, field) {
+                    if (!field.value) {
+                        alert(field.name + ' is required');
+                        required = 1;
+                    }
+                });
+                console.log(fields);
+                return required;
+            }
+            function checkPassword(form) {
+                password1 = form.mdp.value;
+                password2 = form.cmdp.value;
+
+                if (password1 != password2) {
+                    alert("\nMdp différents")
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        </script>
     </head>
     <body>
-        <div>
-            <h1>Inscription</h1>
-        </div>
-        <div>
+        <div class ="container">
+            <div>
+                <h1>Inscription</h1>
+            </div>
             <form>
-                <div>
-                  <label for="nom">Nom </label>
-                  <input type="text" name="nom" id="nom" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nom">Nom</label>
+                        <input type="nom" class="form-control" id="nom" name="nom" placeholder="Nom">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="prenom">Prénom</label>
+                        <input type="prenom" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
+                    </div>
                 </div>
-                <div>
-                  <label for="prenom">Prénom </label>
-                  <input type="text" name="prenom" id="prenom" required>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select id="genre" name="genre" class="form-control">
+                        <option selected>Homme</option>
+                        <option>Femme</option>
+                    </select>
                 </div>
-                <div>
-                  <label for="datenaissance">Date de naissance </label>
-                  <input type="date" name="datenaissance" id="datenaissance" required>
+                <div class="form-group">
+                    <label for="datenaissance">Date de Naissance</label>
+                    <input type="date" class="form-control" id="datenaissance" name="datenaissance">
                 </div>
-                <div>
-                  <label for="adressepostale">Adresse Postale </label>
-                  <input type="text" name="adressepostale" id="adressepostale" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="addresse">Addresse</label>
+                        <input type="text" class="form-control" id="addresse" name="addresse" placeholder="01 rue de l'église">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="codepostal">Code postal</label>
+                        <input type="text" class="form-control" name="codepostal" id="codepostal" placeholder="69000">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="commune">Commune</label>
+                        <input type="text" class="form-control" name="commune" id="commune" placeholder="Lyon">
+                    </div>                  
                 </div>
-                <div>
-                  <label for="codepostal">Code postal </label>
-                  <input type="text" name="codepostal" id="codepostal" required>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nom@exemple.com">
                 </div>
-                <div>
-                  <label for="commune">Commune </label>
-                  <input type="text" name="commune" id="commune" required>
-                </div>  
-                <div >
-                  <label for="email">Email </label>
-                  <input type="email" name="email" id="email" required>
+                <div class="form-group">    
+                    <label for="telephone">Télephone</label>
+                    <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0612345678">
                 </div>
-                <div>
-                  <label for="telephone">Téléphone </label>
-                  <input type="text" name="telephone" id="telephone" required>
+                <div class="form-group">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" class="form-control" id="mdp" name="mdp" placeholder="motdepasse">
                 </div>
-                <div>
-                  <label for="mdp">Mot de passe </label>
-                  <input type="password" name="mdp" id="mdp" required>
+                <div class="form-group">
+                    <label for="cdmp">Confirmer mot de passe</label>
+                    <input type="password" class="form-control" id="cmdp" name="cmdp" placeholder="motdepasse">
                 </div>
-                <div>
-                  <label for="cmdp">Confirmer mot de passe </label>
-                  <input type="password" name="cmdp" id="cmdp" required>
-                </div>
-                <div>
-                  <input type="button" id="boutonInscription" role="button" value="Valider">
-                </div>
-              </form>
+                <button type="submit" id="boutonInscription" class="btn btn-primary" role="button">Valider</button>
+            </form>
         </div>
+
         <script>
-        $(document).ready(function () {
-        $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
-            
-                
-            console.log("clic sur le bouton inscription"); // LOG dans Console Javascript
-            //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+            $(document).ready(function () {
+                $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
 
-            // Récupération de la valeur des champs du formulaire
-            let champ_mdp = $('#mdp').val();
-            let champ_cmdp = $('#cmdp').val();
-            let champ_prenom = $('#prenom').val();
-            let champ_nom = $('#nom').val();
-            let champ_email = $('#email').val();
-            let champ_telephone = $('#telephone').val();
-            let champ_codePostal = $('#codePostal').val();
-            let champ_adressePostale = $('#adressepostale').val();
-            let champ_date = $('#datenaissance').val();
-            let champ_commune = $('#commune').val();
 
-            if(champ_mdp !== champ_cmdp){
-               alert('mdp différents'); 
-            } else {
-                // Appel AJAX
-                $.ajax({
-                url: './ActionServlet',
-                method: 'POST',
-                data: {
-                    todo: 'inscriptionClient',
-                    mdp : champ_mdp,
-                    cmdp : champ_cmdp,
-                    prenom : champ_prenom,
-                    nom : champ_nom,
-                    email : champ_email,
-                    telephone : champ_telephone,
-                    codePostal : champ_codePostal,
-                    adressePostale : champ_adressePostale,
-                    date : champ_date,
-                    commune : champ_commune
-                },
-                dataType: 'json'
-            })
-                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                    console.log('Response', response); // LOG dans Console Javascript     
-                })
-                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                    console.log('Error', error); // LOG dans Console Javascript
-                    alert("Erreur lors de l'appel AJAX");
-                })
-                .always(function () { // Fonction toujours appelée
+                    console.log("clic sur le bouton inscription"); // LOG dans Console Javascript
+                    //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
+                    let required = formcheck();
+                    if (required === 1) {
+                        return false;
+                    }
+                    let form = document.forms[0];
+                    if (checkPassword(form) == false) {
+                        return false;
+                    }
+
+                    // Récupération de la valeur des champs du formulaire
+                    let champ_mdp = $('#mdp').val();
+                    let champ_cmdp = $('#cmdp').val();
+                    let champ_prenom = $('#prenom').val();
+                    let champ_nom = $('#nom').val();
+                    let champ_email = $('#email').val();
+                    let champ_telephone = $('#telephone').val();
+                    let champ_codePostal = $('#codePostal').val();
+                    let champ_adressePostale = $('#adressepostale').val();
+                    let champ_date = $('#datenaissance').val();
+                    let champ_commune = $('#commune').val();
+
+
+                    // Appel AJAX
+                    $.ajax({
+                        url: './ActionServlet',
+                        method: 'POST',
+                        data: {
+                            todo: 'inscriptionClient',
+                            mdp: champ_mdp,
+                            cmdp: champ_cmdp,
+                            prenom: champ_prenom,
+                            nom: champ_nom,
+                            email: champ_email,
+                            telephone: champ_telephone,
+                            codePostal: champ_codePostal,
+                            adressePostale: champ_adressePostale,
+                            date: champ_date,
+                            commune: champ_commune
+                        },
+                        dataType: 'json'
+                    })
+                            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                                console.log('Response', response); // LOG dans Console Javascript 
+                                alert("Inscription réussie");
+                                window.location.replace("./connexionClient.html");
+                            })
+                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                                console.log('Error', error); // LOG dans Console Javascript
+                                alert("Erreur lors de l'inscription veuillez réessayer plus tard");
+                            })
+                            .always(function () { // Fonction toujours appelée
+
+                            });
+
+
 
                 });
-            }
-            
-            
             });
-        });
-    </script>
+        </script>
     </body>
-    
+
 </html>
