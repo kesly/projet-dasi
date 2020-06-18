@@ -4,7 +4,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <html>
     <head>
@@ -19,34 +18,31 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- Latest compiled JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
         <script>
-            function formcheck() {
-                var fields = $(".ss-item-required")
-                        .find("select, textarea, input").serializeArray();
-                let required = 0;
-                $.each(fields, function (i, field) {
-                    if (!field.value) {
-                        alert(field.name + ' is required');
-                        required = 1;
-                    }
-                });
-                console.log(fields);
-                return required;
-            }
-            function checkPassword(form) {
-                password1 = form.mdp.value;
-                password2 = form.cmdp.value;
+        function formcheck() {
+        var fields = $(".ss-item-required").find("select, textarea, input").serializeArray();
 
-                if (password1 != password2) {
-                    alert("\nMdp différents")
+        $.each(fields, function(i, field) {
+          if (!field.value)
+            alert(field.name + ' is required');
+         });
+        console.log(fields);
+      }
+        
+        function checkPassword(form) {
+                    password1 = form.mdp.value;
+            password2 = form.cmdp.value;
+            if (password1 != password2) {
+            alert("\nMdp différents")
                     return false;
-                } else {
-                    return true;
-                }
+            } else {
+            return true;
             }
+        }
         </script>
     </head>
     <body>
@@ -56,13 +52,13 @@ and open the template in the editor.
             </div>
             <form>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 ss-item-required ">
                         <label for="nom">Nom</label>
-                        <input type="nom" class="form-control" id="nom" name="nom" placeholder="Nom">
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 ss-item-required">
                         <label for="prenom">Prénom</label>
-                        <input type="prenom" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
+                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
                     </div>
                 </div>
                 <div class="form-group">
@@ -72,79 +68,81 @@ and open the template in the editor.
                         <option>Femme</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group ss-item-required">
                     <label for="datenaissance">Date de Naissance</label>
                     <input type="date" class="form-control" id="datenaissance" name="datenaissance">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="addresse">Addresse</label>
-                        <input type="text" class="form-control" id="addresse" name="addresse" placeholder="01 rue de l'église">
+                        <label for="addressepostale">Addresse</label>
+                        <input type="text" class="form-control" id="addressepostale" name="addressepostale" placeholder="01 rue de l'église">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 ss-item-required">
                         <label for="codepostal">Code postal</label>
                         <input type="text" class="form-control" name="codepostal" id="codepostal" placeholder="69000">
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-4 ss-item-required">
                         <label for="commune">Commune</label>
                         <input type="text" class="form-control" name="commune" id="commune" placeholder="Lyon">
                     </div>                  
                 </div>
-                <div class="form-group">
+                <div class="form-group ss-item-required">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="nom@exemple.com">
                 </div>
-                <div class="form-group">    
+                <div class="form-group ss-item-required">    
                     <label for="telephone">Télephone</label>
                     <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="0612345678">
                 </div>
-                <div class="form-group">
+                <div class="form-group ss-item-required">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" class="form-control" id="mdp" name="mdp" placeholder="motdepasse">
+                    <input type="password" class="form-control" id="mdp" name="mdp" placeholder="motdepasse" autocomplete="on">
                 </div>
-                <div class="form-group">
+                <div class="form-group ss-item-required">
                     <label for="cdmp">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" id="cmdp" name="cmdp" placeholder="motdepasse">
+                    <input type="password" class="form-control" id="cmdp" name="cmdp" placeholder="motdepasse"  autocomplete="on">
                 </div>
-                <button type="submit" id="boutonInscription" class="btn btn-primary" role="button">Valider</button>
+                <input type="button"  id="boutonInscription" class="btn btn-primary" role="button" value="Valider">
             </form>
         </div>
 
         <script>
-            $(document).ready(function () {
-                $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
+        $(document).ready(function () {
+        
+        $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
 
 
-                    console.log("clic sur le bouton inscription"); // LOG dans Console Javascript
-                    //$('#notification').html("Connexion..."); // Message pour le paragraphe de notification
-                    let required = formcheck();
-                    if (required === 1) {
-                        return false;
-                    }
-                    let form = document.forms[0];
-                    if (checkPassword(form) == false) {
-                        return false;
-                    }
 
-                    // Récupération de la valeur des champs du formulaire
-                    let champ_mdp = $('#mdp').val();
-                    let champ_cmdp = $('#cmdp').val();
-                    let champ_prenom = $('#prenom').val();
-                    let champ_nom = $('#nom').val();
-                    let champ_email = $('#email').val();
-                    let champ_telephone = $('#telephone').val();
-                    let champ_codePostal = $('#codePostal').val();
-                    let champ_adressePostale = $('#adressepostale').val();
-                    let champ_date = $('#datenaissance').val();
-                    let champ_commune = $('#commune').val();
+            let required = formcheck();
+            if (required === 1) {
+            return false;
+            }
 
 
-                    // Appel AJAX
-                    $.ajax({
-                        url: './ActionServlet',
-                        method: 'POST',
-                        data: {
-                            todo: 'inscriptionClient',
+            let form = document.forms[0];
+            if (checkPassword(form) == false) {
+            return false;
+            }
+
+            // Récupération de la valeur des champs du formulaire
+            let champ_mdp = $('#mdp').val();
+            let champ_cmdp = $('#cmdp').val();
+            let champ_prenom = $('#prenom').val();
+            let champ_nom = $('#nom').val();
+            let champ_email = $('#email').val();
+            let champ_telephone = $('#telephone').val();
+            let champ_codePostal = $('#codepostal').val();
+            let champ_adressePostale = $('#adressepostale').val();
+            let champ_date = $('#datenaissance').val();
+            let champ_commune = $('#commune').val();
+            let strUser = document.getElementById("genre").options[document.getElementById("genre").selectedIndex].text;
+            alert("OUI");
+            // Appel AJAX
+            $.ajax({
+            url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                    todo: 'inscriptionClient',
                             mdp: champ_mdp,
                             cmdp: champ_cmdp,
                             prenom: champ_prenom,
@@ -155,27 +153,23 @@ and open the template in the editor.
                             adressePostale: champ_adressePostale,
                             date: champ_date,
                             commune: champ_commune
-                        },
-                        dataType: 'json'
+                    },
+                    dataType: 'json'
+            })
+                    .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                    console.log('Response', response); // LOG dans Console Javascript 
+                    alert("Inscription réussie");
+                    window.location.replace("./connexionClient.html");
                     })
-                            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                                console.log('Response', response); // LOG dans Console Javascript 
-                                alert("Inscription réussie");
-                                window.location.replace("./connexionClient.html");
-                            })
-                            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                                console.log('Error', error); // LOG dans Console Javascript
-                                alert("Erreur lors de l'inscription veuillez réessayer plus tard");
-                            })
-                            .always(function () { // Fonction toujours appelée
-
-                            });
-
-
-
-                });
+                    .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                    console.log('Error', error); // LOG dans Console Javascript
+                    alert("Erreur lors de l'inscription veuillez réessayer plus tard");
+                    })
+                    .always(function () { // Fonction toujours appelée
+                    });
             });
-        </script>
+                        });
+                    </script>
     </body>
 
 </html>
