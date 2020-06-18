@@ -31,13 +31,14 @@ and open the template in the editor.
 
     <script>
         function formcheck() {
-            var fields = $(".ss-item-required").find("select, textarea, input").serializeArray();
-            var required = true;
+            let fields = $(".ss-item-required").find("select, textarea, input").serializeArray();
+            let required = true;
             $.each(fields, function (i, field) {
-                if (!field.value)
-                    alert(field.name + " doit être complété");
-                required = false;
-                return required;
+                if (!field.value){
+                     alert(field.name + " doit être complété");
+                     required = false;
+                     return required;
+                }   
             });
             return required;
         }
@@ -125,13 +126,14 @@ and open the template in the editor.
 
             $('#boutonInscription').on('click', function () { // Fonction appelée lors du clic sur le bouton
 
-
+    
 
                 let required = formcheck();
-                if (required === false) {
+
+                if (required == false) {
                     return false;
                 }
-
+                
 
                 let form = document.forms[0];
                 if (checkPassword(form) == false) {
