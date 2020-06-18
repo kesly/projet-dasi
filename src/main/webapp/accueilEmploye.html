@@ -17,8 +17,8 @@ and open the template in the editor.
     
     </head>
     <body>
-        <div>
-            <h1>Profil du Client</h1>
+        <div id="proposition" style="display: none">
+            <h1>Découvrez votre profil astral</h1>
 
             <p>
                 Signe zodiac: <span id="signe-zodiac"></span>
@@ -44,7 +44,7 @@ and open the template in the editor.
                         url: './ActionServlet',
                         method: 'POST',
                         data: {
-                            todo: 'profil-astral'
+                            todo: 'accueilEmploye'
                         },
                         dataType: 'json'
                     })
@@ -54,11 +54,10 @@ and open the template in the editor.
                   
                                 var profilAstral = response.profilAstral;
                                 $('#signe-zodiac').html(profilAstral.signeZodiac);
-
                                 $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
                                 $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
                                 $('#animal-totem').html(profilAstral.animalTotem);
-                   
+                                $('#proposition').css('display','block');
                         })
                     
                 .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX

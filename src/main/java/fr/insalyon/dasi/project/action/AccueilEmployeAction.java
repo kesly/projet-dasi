@@ -6,7 +6,7 @@ import fr.insalyon.dasi.td1.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class GetProfilAstralAction extends Action{
+public class AccueilEmployeAction extends Action{
 
     @Override
     public void executer(HttpServletRequest request) {
@@ -14,7 +14,7 @@ public class GetProfilAstralAction extends Action{
         Service service = new Service();
         HttpSession session = request.getSession();
         
-        Long idClient = (Long) session.getAttribute("idClient");
+        Long idEmploye = (Long) session.getAttribute("idEmploye");
         
         
 

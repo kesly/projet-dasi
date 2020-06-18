@@ -4,29 +4,32 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.td1.metier.modele.Client;
-import fr.insalyon.dasi.td1.metier.modele.ProfilAstral;
+import fr.insalyon.dasi.td1.metier.modele.Employe;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ProfilAstralSerialisation extends Serialisation {
+public class ProfilEmployeSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        ProfilAstral profilAstral = (ProfilAstral)request.getAttribute("profilAstral");
+        Employe employe = (Employe)request.getAttribute("employe");
 
         JsonObject container = new JsonObject();
 
+        Boolean connexion = (employe != null);
+        container.addProperty("connexion", connexion);
 
-        if (profilAstral != null) {
+        if (employe != null) {
             JsonObject jsonClient = new JsonObject();
-            jsonClient.addProperty("animalTotem", profilAstral.getAnimalTotem());
-            jsonClient.addProperty("couleurPorteBonheur", profilAstral.getCouleurPorteBonheur());
-            jsonClient.addProperty("signeAstrologiqueChinois", profilAstral.getSigneAstrologiqueChinois());
-            jsonClient.addProperty("signeZodiac", profilAstral.getSigneZodiac());
+            jsonClient.addProperty("id", employe.getId());
+            jsonClient.addProperty("nom", employe.getNom());
+            jsonClient.addProperty("prenom", employe.getPrenom());
+            jsonClient.addProperty("mail", employe.getMail());
 
-            container.add("profilAstral", jsonClient);
+            container.add("employe", jsonClient);
         }
 
         response.setContentType("application/json;charset=UTF-8");
