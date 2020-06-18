@@ -42,22 +42,25 @@ public class InscriptionClientAction extends Action{
         } catch (ParseException ex) {
             Logger.getLogger(InscriptionClientAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String adressePostale = request.getParameter("adressePostale");
-        String codePostal = request.getParameter("codePostal");
+        String adressePostale = request.getParameter("adressepostale");
+        String codePostal = request.getParameter("codepostal");
         String commune = request.getParameter("commune");
         String email = request.getParameter("email");
         String telephone = request.getParameter("telephone");
         String mdp = request.getParameter("mdp");
+        String genre = request.getParameter("genre");
         
         String addresseComplete = adressePostale+", "+codePostal+" "+commune;
         Service service = new Service();
         
+        System.out.println("Adresse : "+adressePostale);
        
         System.out.println("Test 1 :" +addresseComplete);
         System.out.println("Test 2 : "+ date);
         
-        Client c = new Client(nom,prenom,date,addresseComplete,telephone,"M",email,mdp);
-
+        Client c = new Client(nom,prenom,date,addresseComplete,telephone,genre,email,mdp);
+        
+        System.out.println(c);
         
         try {
             service.inscriptionClient(c);
