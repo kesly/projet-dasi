@@ -34,6 +34,7 @@ public class PropositionSerialisation extends Serialisation {
             JsonObject jsonMedium= new JsonObject();
             jsonMedium.addProperty("denomination", medium.getDenomination());
             jsonMedium.addProperty("genre", medium.getGenre());
+            jsonMedium.addProperty("type", medium.getClass().getSimpleName());
             jsonMedium.addProperty("presentation", medium.getPresentation());
             
             container.add("medium", jsonMedium);

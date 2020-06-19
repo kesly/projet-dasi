@@ -20,9 +20,13 @@ and open the template in the editor.
         <div id="proposition" style="display: none">
             <h1>Votre profil si vous l'acceptez:</h1>
             <p>
+                Dénomination: <span id="denomination-medium"></span>
+                <br>
+                Genre : <span id="genre-medium"></span>
+                <br>
                 Type: <span id="type-medium"></span>
                 <br>
-                Nom: <span id="nom-medium"></span>
+                Presentation: <span id="presentation-medium"></span>
             </p>
             
             
@@ -58,10 +62,15 @@ and open the template in the editor.
                         console.log('Response',response); // LOG dans Console Javascript
                   
                                 var profilAstral = response.profilAstral;
+                                var medium = response.medium;                                
                                 $('#signe-zodiac').html(profilAstral.signeZodiac);
                                 $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
                                 $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
                                 $('#animal-totem').html(profilAstral.animalTotem);
+                                $('#denomination-medium').html(medium.denomination);
+                                $('#genre-medium').html(medium.genre);
+                                $('#type-medium').html(medium.type);
+                                $('#presentation-medium').html(medium.presentation);
                                 $('#proposition').css('display','block');
                         })
                     
