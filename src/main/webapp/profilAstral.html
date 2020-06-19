@@ -5,74 +5,98 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>votre profil astral</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CSS only -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<head>
+    <title>votre profil astral</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <!-- Librairie Javascript: jQuery (v3.4.1) -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
-    </head>
-    <body>
-        <div>
-            <h1>Profil du Client</h1>
+    <!-- Librairie Javascript: jQuery (v3.4.1) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-            <p>
-                Signe zodiac: <span id="signe-zodiac"></span>
-                <br><br>
-                Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
-                <br><br>
-                Couleur porte bonheur: <span id="couleur-porte-bonheur"></span>
-                <br><br>
-                Animal totem: <span id="animal-totem"></span>
-            </p>
-            <a href="./consulterHistorique.html">Consulter Historique des consultations</a>
+</head>
+<body>
+<div class="container">
+
+    <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">Profil</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Consulter profil</a>
+                <a class="dropdown-item" href="./profilAstral.html">Profil astral</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">Consultation</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="./demandeConsultation.html">Demande de consultation</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./consulterHistorique.html">Historique des consultations</a>
+            </div>
+        </li>
+    </ul>
+
+    <div>
+        <h1>Profil du Client</h1>
+
+        <p>
+            Signe zodiac: <span id="signe-zodiac"></span>
+            <br><br>
+            Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
+            <br><br>
+            Couleur porte bonheur: <span id="couleur-porte-bonheur"></span>
+            <br><br>
+            Animal totem: <span id="animal-totem"></span>
+        </p>
+        <a href="./consulterHistorique.html">Consulter Historique des consultations</a>
+
+    </div>
+
+</div>
 
 
-        </div>
-        
-        
-        
-        <script>
-            $(document).ready(function() {
-                // Appel AJAX
-                    console.log("salut kekes");
-                $.ajax({
-                        url: './ActionServlet',
-                        method: 'POST',
-                        data: {
-                            todo: 'profil-astral'
-                        },
-                        dataType: 'json'
-                    })
-                    
-                .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                        console.log('Response',response); // LOG dans Console Javascript
-                  
-                                var profilAstral = response.profilAstral;
-                                $('#signe-zodiac').html(profilAstral.signeZodiac);
+<script>
+    $(document).ready(function () {
+        // Appel AJAX
+        console.log("salut kekes");
+        $.ajax({
+            url: './ActionServlet',
+            method: 'POST',
+            data: {
+                todo: 'profil-astral'
+            },
+            dataType: 'json'
+        })
 
-                                $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
-                                $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
-                                $('#animal-totem').html(profilAstral.animalTotem);
-                   
-                        })
-                    
-                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                            console.log('Error', error); // LOG dans Console Javascript
-                            alert("Erreur lors de l'appel AJAX");
-                        })
-                     
-                .always(function () { // Fonction toujours appelée
+            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                console.log('Response', response); // LOG dans Console Javascript
 
-                        });
+                var profilAstral = response.profilAstral;
+                $('#signe-zodiac').html(profilAstral.signeZodiac);
+
+                $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
+                $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
+                $('#animal-totem').html(profilAstral.animalTotem);
+
+            })
+
+            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                console.log('Error', error); // LOG dans Console Javascript
+                alert("Erreur lors de l'appel AJAX");
+            })
+
+            .always(function () { // Fonction toujours appelée
 
             });
-        </script>
-        
-        
-    </body>
+
+    });
+</script>
+
+
+</body>
 </html>
