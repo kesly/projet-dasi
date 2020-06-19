@@ -41,6 +41,9 @@ and open the template in the editor.
                 <br><br>
                 Animal totem: <span id="animal-totem"></span>
             </p>
+            
+            <input name="button" type="button" id="myButton1" onClick="accepterConsultation(); this.style.color='green'; " value="Accepter" />
+            
         </div>
         
         
@@ -84,8 +87,17 @@ and open the template in the editor.
                         });
 
             });
+            
+            
+            function accepterConsultation(){
+                document.body.style.backgroundColor = '#bef7cd';
+                setTimeout(() => {  document.body.style.backgroundColor = "white"; }, 200);
+                $('#proposition').css('display','none');
+                alert("Consultation accepté, préparez vous à l'appel du client");
+                
+           }
         </script>
-        
-        
+
+
     </body>
 </html>
