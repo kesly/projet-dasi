@@ -56,10 +56,19 @@ and open the template in the editor.
                 console.log('Response', response); // LOG dans Console Javascript
 
                 var body = document.getElementsByTagName("body")[0];
-                // creates a <table> element and a <tbody> element
-                var tbl = document.createElement("table");
-                var tblBody = document.createElement("tbody");
                 let consultations = response.consultations;
+                console.log(consultations);
+                if (consultations.length == 0) {
+                    var tt=document.createElement("div")
+                    var ttext=document.createTextNode("Vous n'avez eu aucune consultations pour l'instant.");
+                    tt.appendChild(ttext);
+                    body.appendChild(tt);
+                }
+                else {
+                    var tbl = document.createElement("table");
+                var tblBody = document.createElement("tbody");
+                
+                
                 consultations.forEach(function(consultation) {
                     var row = document.createElement("tr");
                     var cell = document.createElement("td");
@@ -90,11 +99,14 @@ and open the template in the editor.
                 body.appendChild(tbl);
                 // sets the border attribute of tbl to 2;
                 tbl.setAttribute("border", "2");
+                }
+                
+                
                 })
 
                 .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
                 console.log('Error', error); // LOG dans Console Javascript
-                        alert("Erreur lors de l'appel AJAX");
+                        alert("Problème lors de l'accès a la base de donnée, veuillez ressayer plus tard");
                 })
 
                 .always(function () { // Fonction toujours appelée
