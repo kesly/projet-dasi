@@ -33,6 +33,10 @@ and open the template in the editor.
             <h1>Profil astral du client: </h1>
 
             <p>
+                Prénom: <span id="prenom-client"></span>
+                <br><br>
+                Nom: <span id="nom-client"></span>
+                <br><br>
                 Signe zodiac: <span id="signe-zodiac"></span>
                 <br><br>
                 Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
@@ -63,9 +67,12 @@ and open the template in the editor.
                     
                 .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                         console.log('Response',response); // LOG dans Console Javascript
-                  
+                                
+                                var client = response.client;
                                 var profilAstral = response.profilAstral;
                                 var medium = response.medium;                                
+                                $('#prenom-client').html(client.prenom);
+                                $('#nom-client').html(client.nom);
                                 $('#signe-zodiac').html(profilAstral.signeZodiac);
                                 $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
                                 $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);

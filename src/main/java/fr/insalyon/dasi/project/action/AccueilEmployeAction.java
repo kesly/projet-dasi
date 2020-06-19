@@ -35,6 +35,8 @@ public class AccueilEmployeAction extends Action{
 
         if (client != null && medium != null){
             ProfilAstral profilAstral = client.getProfilAstral();
+            request.setAttribute("nomClient", client.getNom());
+            request.setAttribute("prenomClient", client.getPrenom());
             request.setAttribute("profilAstral", profilAstral);
             request.setAttribute("medium", medium);
         }
