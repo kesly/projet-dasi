@@ -5,104 +5,116 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+
 <head>
-    <title>votre profil astral</title>
+    <title>Bienvenue</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Librairie Javascript: jQuery (v3.4.1) -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+    <!--            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+    <!--            crossorigin="anonymous"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
 
 </head>
+
 <body>
-<div class="container">
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" width="90" height="60" class="d-inline-block align-top" alt="">
+            </a>
+            <ul class="navbar-nav">                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profil
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="./profilAstral.html">Profil Astral</a>
+                        <a class="dropdown-item" href="#">Se Deconnecter</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="./demandeConsultation.html">Demander une consultation</a>
+                        <a class="dropdown-item" href="./consulterHistorique.html">Consulter l'historique</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
 
-    <ul class="nav nav-pills">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">Profil</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Consulter profil</a>
-                <a class="dropdown-item" href="./profilAstral.html">Profil astral</a>
-            </div>
-        </li>
+    <div class="container">
+        
+        <div class="text-center">
+            <h1>Votre Profil Astral</h1>
+            
+            <fieldset>
+                
+                Signe zodiac: <span id="signe-zodiac"></span>
+                <br><br>
+                Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
+                <br><br>
+                Couleur porte bonheur: <span id="couleur-porte-bonheur"></span>
+                <br><br>
+                Animal totem: <span id="animal-totem"></span>
+            </fieldset>
+            
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">Consultation</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="./demandeConsultation.html">Demande de consultation</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="./consulterHistorique.html">Historique des consultations</a>
-            </div>
-        </li>
-    </ul>
 
-    <div>
-        <h1>Profil du Client</h1>
 
-        <p>
-            Signe zodiac: <span id="signe-zodiac"></span>
-            <br><br>
-            Signe Astrologique chinois: <span id="signe-astrologique-chinois"></span>
-            <br><br>
-            Couleur porte bonheur: <span id="couleur-porte-bonheur"></span>
-            <br><br>
-            Animal totem: <span id="animal-totem"></span>
-        </p>
-        <a href="./consulterHistorique.html">Consulter Historique des consultations</a>
-
+        </div>
     </div>
 
-</div>
 
 
-<script>
-    $(document).ready(function () {
-        // Appel AJAX
-        console.log("salut kekes");
-        $.ajax({
-            url: './ActionServlet',
-            method: 'POST',
-            data: {
-                todo: 'profil-astral'
-            },
-            dataType: 'json'
-        })
+    <script>
+        $(document).ready(function () {
+            // Appel AJAX
+            console.log("salut kekes");
+            $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'profil-astral'
+                    },
+                    dataType: 'json'
+                })
 
-            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                console.log('Response', response); // LOG dans Console Javascript
+                .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                    console.log('Response', response); // LOG dans Console Javascript
 
-                var profilAstral = response.profilAstral;
-                $('#signe-zodiac').html(profilAstral.signeZodiac);
+                    var profilAstral = response.profilAstral;
+                    $('#signe-zodiac').html(profilAstral.signeZodiac);
 
-                $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
-                $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
-                $('#animal-totem').html(profilAstral.animalTotem);
+                    $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
+                    $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
+                    $('#animal-totem').html(profilAstral.animalTotem);
 
-            })
+                })
 
-            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                console.log('Error', error); // LOG dans Console Javascript
-                alert("Erreur lors de l'appel AJAX");
-            })
+                .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                    console.log('Error', error); // LOG dans Console Javascript
+                    alert("Erreur lors de l'appel AJAX");
+                })
 
-            .always(function () { // Fonction toujours appelée
+                .always(function () { // Fonction toujours appelée
 
-            });
+                });
 
-    });
-</script>
+        });
+    </script>
 
 
 </body>
+
 </html>
