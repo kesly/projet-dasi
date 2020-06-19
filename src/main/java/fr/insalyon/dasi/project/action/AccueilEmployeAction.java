@@ -21,7 +21,7 @@ public class AccueilEmployeAction extends Action{
         Long idEmploye = (Long) session.getAttribute("idEmploye");
         
         List<Consultation> consults= service.findEmployeById(idEmploye).getConsultations();
-        
+        Consultation goodConsulation = null;
         Client client = null;
         Medium medium = null;
         
@@ -29,6 +29,7 @@ public class AccueilEmployeAction extends Action{
             if(consult.getDateHeureDemande() != null && consult.getDateHeureDebut() == null){
                 client=consult.getClient();
                 medium=consult.getMedium();
+                goodConsulation = consult;
                 break;
             }
         }
@@ -37,8 +38,12 @@ public class AccueilEmployeAction extends Action{
             ProfilAstral profilAstral = client.getProfilAstral();
             request.setAttribute("nomClient", client.getNom());
             request.setAttribute("prenomClient", client.getPrenom());
+            request.setAttribute("idClient", client.getId());
             request.setAttribute("profilAstral", profilAstral);
             request.setAttribute("medium", medium);
+            request.setAttribute("consultation", goodConsulation);
+
+
         }
 
 //        System.out.println("" + idEmploye);

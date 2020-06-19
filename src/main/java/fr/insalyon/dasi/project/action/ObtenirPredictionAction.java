@@ -15,8 +15,8 @@ public class ObtenirPredictionAction  extends Action{
     public void executer(HttpServletRequest request) {
 
         Service service = new Service();
-//        HttpSession session = request.getSession();
 
+        System.out.println("###### ID CLIENT: " + request.getParameter("idClient"));
         Long idClient = Long.valueOf(request.getParameter("idClient"));
 
         int amour = Integer.parseInt(request.getParameter("amour"));
@@ -26,13 +26,19 @@ public class ObtenirPredictionAction  extends Action{
         System.out.println("###### ID CLIENT: " + idClient);
 
         Client client = service.findClientById(idClient);
+        
+         System.out.println("###### amour: " + amour);
+          System.out.println("###### sante: " + sante);
+           System.out.println("###### travail: " + travail);
+        
+        System.out.println("###### CLIENT: " + client.toString());
 
         List<String> predictions = null;
 
         try {
             predictions = service.obtenirPredictions(client, amour, sante, travail);
 
-            request.setAttribute("consultation", predictions);
+            request.setAttribute("predictions", predictions);
 
         } catch (IOException e) {
             e.printStackTrace();
