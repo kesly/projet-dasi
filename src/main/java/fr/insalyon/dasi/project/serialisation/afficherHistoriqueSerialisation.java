@@ -9,11 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +22,10 @@ public class afficherHistoriqueSerialisation extends Serialisation {
         if((List<Consultation>)request.getAttribute("consultations")!=null){
             consultations = (List<Consultation>) request.getAttribute("consultations");
         }
-        
+
+
+        System.out.println("########CONSULT @@@@@@@@@@@@@@@@@@Ttttttttttt");
+        System.out.println(consultations);
 
         JsonObject container = new JsonObject();
         if (!consultations.isEmpty() || consultations!=null) {
@@ -38,24 +36,26 @@ public class afficherHistoriqueSerialisation extends Serialisation {
                 JsonObject jsonClient = new JsonObject();
                 jsonClient.addProperty("consultation", consultation.getId());
 
-                String commentaire = consultation.getCommentaire();
                 Date dateHeureDebut = consultation.getDateHeureDebut();
                 System.out.println("777777777777777777777777777");
-                System.out.println(dateHeureDebut.toString());
+               // System.out.println(dateHeureDebut.toString());
                 Date dateHeureFin = consultation.getDateHeureFin();
                 String medium = consultation.getMedium().getDenomination();
                 String mediumPresentation = consultation.getMedium().getPresentation();
                 
                 if(dateHeureDebut==null || dateHeureFin == null){
-                    break;
+                    System.out.println("###_______________________________");
+                    continue;
+                }else {
+
+                    Long secondesDebut = dateHeureDebut.getTime();
+                    Long secondesFin = dateHeureFin.getTime();
+                    Long duree = secondesFin-secondesDebut;
+                    duree=TimeUnit.MILLISECONDS.toMinutes(duree);
+                    System.out.println("999999999999999999999999999");
+                    System.out.println(duree);
+                    jsonClient.addProperty("duree", duree.toString()+" min(s)");
                 }
-                Long secondesDebut = dateHeureDebut.getTime();
-                Long secondesFin = dateHeureFin.getTime();
-                Long duree = secondesFin-secondesDebut;
-                duree=TimeUnit.MILLISECONDS.toMinutes(duree);
-                System.out.println("999999999999999999999999999");
-                System.out.println(duree);
-                jsonClient.addProperty("duree", duree.toString()+" min(s)");
 
 
                 if (dateHeureDebut != null) {

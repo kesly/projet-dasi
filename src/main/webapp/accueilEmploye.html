@@ -173,8 +173,22 @@ and open the template in the editor.
 
 
     function accepterConsultation() {
-        //document.body.style.backgroundColor = '#bef7cd';
-        //setTimeout(() => {  document.body.style.backgroundColor = "white"; }, 200);
+
+        // console.log( "après ", response );
+
+        $.ajax({
+            url: './ActionServlet',
+            method: 'POST',
+            data: {
+                todo: 'demarrerConsultation',
+                idConsultation: consultation.id,
+            },
+            dataType: 'json'
+        }).done( response =>{
+
+            console.log( "après demarrage consult", response );
+        });
+
         $('#accepterButton').css('display', 'none');
         alert("Consultation accepté, préparez vous à l'appel du client");
 
