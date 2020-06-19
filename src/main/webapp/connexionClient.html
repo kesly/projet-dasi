@@ -17,7 +17,7 @@
     <div class="d-flex justify-content-center">
 
         <form class="col-6 mt-10 rounded-50">
-            <fieldset>
+            <fieldset class="form-group">
                 <legend>Connexion</legend>
 
                 <p id="notification">Veuillez saisir votre identifiant (adresse mail) et votre mot de passe.</p>
@@ -32,15 +32,16 @@
                     <input id="champ-password" type="password" class="form-control" aria-describedby="passwordHelp">
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-primary mt-10" id="bouton-connexion" href="#" role="button">Connexion</a>
+                    <button id="bouton-connexion" type="submit" class="btn btn-primary">Connexion</button>
+<!--                    <a class="btn btn-primary mt-10" id="bouton-connexion" href="./accueilClient.html" role="button">Connexion</a>-->
                 </div>
 
-                <div class="d-flex flex-row space-between">
+                <div class="d-flex flex-row justify-content-around">
                     <a href="#">Mot de passe oublié?</a>
-                    <a class="ml-10" href="./inscriptionClient.html">Pas encore de compte</a>
+                    <a class="ml-10" href="#">Pas encore de compte</a>
                 </div>
 
-            </fieldset> 
+            </fieldset>
         </form>
     </div>
 </div>
@@ -71,6 +72,9 @@
                 .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
                     console.log('Response', response); // LOG dans Console Javascript
                     if (response.connexion) {
+
+
+
                         //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
                         // TODO: afficher les informations du client dans la notification
                         // Exemple: Connexion de Ada Lovelace (ID 1)
@@ -78,7 +82,7 @@
                         $('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
 
                         // aller page suivante
-                        window.location.replace("./profilAstral.html");
+                        window.location = "./demandeConsultation.html";
                     } else {
                         //$('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
                     }
@@ -90,6 +94,7 @@
                 .always(function () { // Fonction toujours appelée
 
                 });
+            return false;
         });
     });
 </script>
