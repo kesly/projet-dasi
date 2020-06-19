@@ -37,7 +37,7 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Demande de consultation</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+                <a class="dropdown-item" href="#">Historique des consultations</a>
             </div>
         </li>
     </ul>
@@ -94,7 +94,15 @@
                     document.getElementById("list-medium").innerHTML = document.getElementById("list-medium").innerHTML + createMedium(medium.denomination, medium.genre, medium.presentation, medium.id);
                     console.log("medium2");
 
-                    document.getElementById(`medium-${medium.id}`).addEventListener("click", () => {
+
+                });
+
+                response.mediums.forEach(medium => {
+                    // console.log(medium);
+
+                    const button = document.getElementById(`medium-${medium.id}`);
+                    console.log("button", button);
+                    button.addEventListener("click", () => {
 
                         console.log("click button");
                         $.ajax({
@@ -102,16 +110,19 @@
                             method: 'POST',
                             data: {
                                 todo: 'demandeConsultation',
+                                idMedium: medium.id,
                             },
                             dataType: 'json'
-                        }).done(() => {
-
+                        }).done((response) => {
+                            if(response.reussiteConsultation){
+                                alert("consultation prise avec succès");
+                            }
                         });
-
 
                     })
 
                 });
+
 
                 // buttonsMediums = document.getElementsByClassName("mediums");
                 //
@@ -140,7 +151,7 @@
             });
     });
 
-    function createMedium(denomination, genre, presentation) {
+    function createMedium(denomination, genre, presentation, id) {
 
         // let  rootDiv;
         // rootDiv = document.createElement("div");
