@@ -96,17 +96,17 @@
 
                     document.getElementById(`medium-${medium.id}`).addEventListener("click", () => {
 
-
+                        console.log("click button");
                         $.ajax({
                             url: './ActionServlet',
                             method: 'POST',
                             data: {
-                                todo: 'listerMedium',
+                                todo: 'demandeConsultation',
                             },
                             dataType: 'json'
-                        }).done( ()=>{
+                        }).done(() => {
 
-                        } );
+                        });
 
 
                     })
