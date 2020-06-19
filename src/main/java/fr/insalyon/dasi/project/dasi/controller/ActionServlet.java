@@ -5,22 +5,8 @@
  */
 package fr.insalyon.dasi.project.dasi.controller;
 
-import fr.insalyon.dasi.project.action.AccueilEmployeAction;
-import fr.insalyon.dasi.project.action.Action;
-import fr.insalyon.dasi.project.action.AuthentifierClientAction;
-import fr.insalyon.dasi.project.action.AuthentifierEmployeAction;
-import fr.insalyon.dasi.project.action.GetProfilAstralAction;
-import fr.insalyon.dasi.project.action.InscriptionClientAction;
-import fr.insalyon.dasi.project.action.ListerMediumAction;
-import fr.insalyon.dasi.project.action.consulterHistoriqueAction;
-import fr.insalyon.dasi.project.serialisation.ListerMediumSerialisation;
-import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
-import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
-import fr.insalyon.dasi.project.serialisation.ProfilEmployeSerialisation;
-import fr.insalyon.dasi.project.serialisation.PropositionSerialisation;
-import fr.insalyon.dasi.project.serialisation.Serialisation;
-import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
-import fr.insalyon.dasi.project.serialisation.afficherHistoriqueSerialisation;
+import fr.insalyon.dasi.project.action.*;
+import fr.insalyon.dasi.project.serialisation.*;
 import fr.insalyon.dasi.td1.dao.JpaUtil;
 
 import java.io.IOException;
@@ -73,7 +59,7 @@ public class ActionServlet extends HttpServlet {
         Action action = null;
         Serialisation serialisation = null;
 
-        System.out.println(todo);
+        System.out.println("toto : "+todo);
         if (todo != null) {
             switch (todo) {
                 case "connexionClient":
@@ -104,6 +90,12 @@ public class ActionServlet extends HttpServlet {
                     action = new AccueilEmployeAction();
                     serialisation = new PropositionSerialisation();
                     break;
+                case "demandeConsultation":
+                    action = new DemanderConsultationAction();
+                    serialisation = new DemanderConsultationSerialisation();
+                    break;
+
+
             }
 
             if (action != null) {
