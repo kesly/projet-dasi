@@ -1,187 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!-- Librairie Javascript: jQuery (v3.4.1) -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
-    <!--            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
-    <!--            crossorigin="anonymous"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-    <title>Title</title>
-</head>
-<body>
-<div class="container">
-    <ul class="nav nav-pills">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">Profil</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
+    <head>
+        <title>Bienvenue</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">Consultation</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="./demandeConsultation.html">Demande de consultation</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Historique des consultations</a>
-            </div>
-        </li>
-    </ul>
+        <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
+        <!--            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
+        <!--            crossorigin="anonymous"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+        </script>
 
-    <div id="list-medium">
-        reserver un rendez vous
+    </head>
 
-        <div class="row border border-primary">
-            <div class="col-3 border border-secondary d-flex flex-column justify-content-center align-items-center">
-                <img width="50px" height="50px"
-                     src="https://image.freepik.com/icones-gratuites/femme-avatar_318-9840.jpg" alt="test"/>
-                <p> Mme Irma</p>
-            </div>
-            <div class="d-flex flex-column col-6 justify-content-center">
-                <div>
-                    Cartomacienne
+    <body>
+        <nav class="navbar navbar-expand-sm sticky-top navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" width="90" height="60" class="d-inline-block align-top" alt="">
+            </a>
+            <ul class="navbar-nav">                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profil
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="./profilAstral.html">Profil Astral</a>
+                        <a class="dropdown-item" href="#">Se Deconnecter</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="./demandeConsultation.html">Demander une consultation</a>
+                        <a class="dropdown-item" href="./consulterHistorique.html">Consulter l'historique</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        
+
+        <div class ="container">
+
+
+            <div id="list-medium">
+                reserver un rendez vous
+
+                <div class="row border border-primary">
+                    <div class="col-3 border border-secondary d-flex flex-column justify-content-center align-items-center">
+                        <img width="50px" height="50px"
+                             src="https://image.freepik.com/icones-gratuites/femme-avatar_318-9840.jpg" alt="test" />
+                        <p> Mme Irma</p>
+                    </div>
+                    <div class="d-flex flex-column col-6 justify-content-center">
+                        <div>
+                            Cartomacienne
+                        </div>
+                        <div>
+
+                            comprenez votre entourage
+                        </div>
+                    </div>
+
+                    <div class="border border-secondary d-flex flex-row justify-content-center align-items-center">
+                        <button> Reserver</button>
+                    </div>
+
+
                 </div>
-                <div>
 
-                    comprenez votre entourage
-                </div>
             </div>
-
-            <div class="border border-secondary d-flex flex-row justify-content-center align-items-center">
-                <button> Reserver</button>
-            </div>
-
-
         </div>
 
-    </div>
-</div>
+        <script>
+            $(document).ready(function () {
 
-<script>
-    $(document).ready(function () {
+                // lister medium
 
-        // lister medium
+                $("list-medium").css("display", )
+                // Appel AJAX
+                $.ajax({
+                    url: './ActionServlet',
+                    method: 'POST',
+                    data: {
+                        todo: 'listerMedium',
+                    },
+                    dataType: 'json'
+                })
+                        .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                            console.log('Response', response); // LOG dans Console Javascript
 
-        $("list-medium").css("display",)
-        // Appel AJAX
-        $.ajax({
-            url: './ActionServlet',
-            method: 'POST',
-            data: {
-                todo: 'listerMedium',
-            },
-            dataType: 'json'
-        })
-            .done(function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                console.log('Response', response); // LOG dans Console Javascript
-
-                response.mediums.forEach(medium => {
-                    console.log(medium);
-                    document.getElementById("list-medium").innerHTML = document.getElementById("list-medium").innerHTML + createMedium(medium.denomination, medium.genre, medium.presentation, medium.id);
-                    console.log("medium2");
+                            response.mediums.forEach(medium => {
+                                console.log(medium);
+                                document.getElementById("list-medium").innerHTML = document.getElementById(
+                                        "list-medium").innerHTML + createMedium(medium.denomination, medium
+                                        .genre, medium.presentation, medium.id);
+                                console.log("medium2");
 
 
-                });
+                            });
 
-                response.mediums.forEach(medium => {
-                    // console.log(medium);
+                            response.mediums.forEach(medium => {
+                                // console.log(medium);
 
-                    const button = document.getElementById(`medium-${medium.id}`);
-                    console.log("button", button);
-                    button.addEventListener("click", () => {
+                                const button = document.getElementById(`medium-${medium.id}`);
+                                console.log("button", button);
+                                button.addEventListener("click", () => {
 
-                        console.log("click button");
-                        $.ajax({
-                            url: './ActionServlet',
-                            method: 'POST',
-                            data: {
-                                todo: 'demandeConsultation',
-                                idMedium: medium.id,
-                            },
-                            dataType: 'json'
-                        }).done((response) => {
-                            if(response.reussiteConsultation){
-                                alert("consultation prise avec succès");
-                            }
+                                    console.log("click button");
+                                    $.ajax({
+                                        url: './ActionServlet',
+                                        method: 'POST',
+                                        data: {
+                                            todo: 'demandeConsultation',
+                                            idMedium: medium.id,
+                                        },
+                                        dataType: 'json'
+                                    }).done((response) => {
+                                        if (response.reussiteConsultation) {
+                                            alert("consultation prise avec succès");
+                                        }
+                                    });
+
+                                })
+
+                            });
+
+
+                            // buttonsMediums = document.getElementsByClassName("mediums");
+                            //
+                            // buttonsMediums.forEach( buttonMedium =>{
+                            //
+                            //     console.log(buttonMedium);
+                            //
+                            // } );
+
+
+                            //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                            // TODO: afficher les informations du client dans la notification
+                            // Exemple: Connexion de Ada Lovelace (ID 1)
+                            let client = response.client;
+                            //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
+
+                            // aller page suivante
+
+                        })
+                        .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                            console.log('Error', error); // LOG dans Console Javascript
+                            alert("Erreur lors de l'appel AJAX");
+                        })
+                        .always(function () { // Fonction toujours appelée
+
                         });
-
-                    })
-
-                });
-
-
-                // buttonsMediums = document.getElementsByClassName("mediums");
-                //
-                // buttonsMediums.forEach( buttonMedium =>{
-                //
-                //     console.log(buttonMedium);
-                //
-                // } );
-
-
-                //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
-                // TODO: afficher les informations du client dans la notification
-                // Exemple: Connexion de Ada Lovelace (ID 1)
-                let client = response.client;
-                //$('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
-
-                // aller page suivante
-
-            })
-            .fail(function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                console.log('Error', error); // LOG dans Console Javascript
-                alert("Erreur lors de l'appel AJAX");
-            })
-            .always(function () { // Fonction toujours appelée
-
             });
-    });
 
-    function createMedium(denomination, genre, presentation, id) {
+            function createMedium(denomination, genre, presentation, id) {
 
-        // let  rootDiv;
-        // rootDiv = document.createElement("div");
+                // let  rootDiv;
+                // rootDiv = document.createElement("div");
 
-        return (`       <div class="row border border-primary">
-            <div class="col-3 border border-secondary d-flex flex-column justify-content-center align-items-center">
-                <img width="50px" height="50px" src="https://image.freepik.com/icones-gratuites/femme-avatar_318-9840.jpg" alt="test"/>
-                <p> ${denomination}</p>
-            </div>
-            <div class="d-flex flex-column col-6 justify-content-center">
-                <div>
-                    ${denomination}
+                return (`       <div class="row border border-primary">
+                <div class="col-3 border border-secondary d-flex flex-column justify-content-center align-items-center">
+                    <img width="50px" height="50px" src="https://image.freepik.com/icones-gratuites/femme-avatar_318-9840.jpg" alt="test"/>
+                    <p> ${denomination}</p>
                 </div>
-                <div>
+                <div class="d-flex flex-column col-6 justify-content-center">
+                    <div>
+                        ${denomination}
+                    </div>
+                    <div>
 
-                    ${presentation}
+                        ${presentation}
+                    </div>
                 </div>
-            </div>
 
-            <div class="border border-secondary d-flex flex-row justify-content-center align-items-center" >
-                <button id="medium-${id}"> Reserver</button>
-            </div>
-
-
-        </div>`)
+                <div class="border border-secondary d-flex flex-row justify-content-center align-items-center" >
+                    <button id="medium-${id}"> Reserver</button>
+                </div>
 
 
-    }
+            </div>`)
 
 
-</script>
-</body>
+            }
+        </script>
+    </body>
+
 </html>
