@@ -24,7 +24,6 @@ public class DemanderConsultationAction extends Action{
 
         Long idMedium = Long.valueOf(request.getParameter("idMedium"));
 
-        System.out.println("" + idClient);
         System.out.println("###### ID CLIENT: " + idClient);
 
         Client client = service.findClientById(idClient);
