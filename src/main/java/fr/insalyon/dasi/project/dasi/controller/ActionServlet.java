@@ -12,6 +12,7 @@ import fr.insalyon.dasi.project.action.AuthentifierEmployeAction;
 import fr.insalyon.dasi.project.action.GetProfilAstralAction;
 import fr.insalyon.dasi.project.action.InscriptionClientAction;
 import fr.insalyon.dasi.project.action.ListerMediumAction;
+import fr.insalyon.dasi.project.action.consulterHistoriqueAction;
 import fr.insalyon.dasi.project.serialisation.ListerMediumSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilAstralSerialisation;
 import fr.insalyon.dasi.project.serialisation.ProfilClientSerialisation;
@@ -19,6 +20,7 @@ import fr.insalyon.dasi.project.serialisation.ProfilEmployeSerialisation;
 import fr.insalyon.dasi.project.serialisation.PropositionSerialisation;
 import fr.insalyon.dasi.project.serialisation.Serialisation;
 import fr.insalyon.dasi.project.serialisation.ValidationInscriptionSerialisation;
+import fr.insalyon.dasi.project.serialisation.afficherHistoriqueSerialisation;
 import fr.insalyon.dasi.td1.dao.JpaUtil;
 
 import java.io.IOException;
@@ -85,6 +87,10 @@ public class ActionServlet extends HttpServlet {
                 case "inscriptionClient":
                     action = new InscriptionClientAction();
                     serialisation = new ValidationInscriptionSerialisation();
+                    break;
+                case "consulterHistorique":
+                    action = new consulterHistoriqueAction();
+                    serialisation = new afficherHistoriqueSerialisation();
                     break;
                 case "profil-astral":
                     action = new GetProfilAstralAction();
