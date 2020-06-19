@@ -16,6 +16,8 @@ public class PropositionSerialisation extends Serialisation {
 
         ProfilAstral profilAstral = (ProfilAstral)request.getAttribute("profilAstral");
         Medium medium = (Medium)request.getAttribute("medium");
+        String nomClient = (String) request.getAttribute("nomClient");
+        String prenomClient = (String) request.getAttribute("prenomClient");
 
         JsonObject container = new JsonObject();
 
@@ -38,6 +40,16 @@ public class PropositionSerialisation extends Serialisation {
             jsonMedium.addProperty("presentation", medium.getPresentation());
             
             container.add("medium", jsonMedium);
+        }
+        
+        System.out.println(nomClient+"   "+prenomClient);
+        
+        if (nomClient != null && prenomClient != null) {
+            JsonObject jsonClient= new JsonObject();
+            jsonClient.addProperty("nom", nomClient);
+            jsonClient.addProperty("prenom", prenomClient);
+            
+            container.add("client", jsonClient);
         }
 
         response.setContentType("application/json;charset=UTF-8");
