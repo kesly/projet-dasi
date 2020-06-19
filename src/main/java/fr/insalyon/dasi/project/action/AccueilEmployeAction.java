@@ -18,9 +18,9 @@ public class AccueilEmployeAction extends Action{
         
         
 
-        System.out.println("" + idClient);
-        System.out.println("###### ID CLIENT: " + idClient);
-        ProfilAstral profilAstral = service.findClientById(idClient).getProfilAstral();
+        System.out.println("" + idEmploye);
+        System.out.println("###### ID CLIENT: " + idEmploye);
+        ProfilAstral profilAstral = service.findClientById(idEmploye).getProfilAstral();
         System.out.println("\n\n###### profil astral: \n");
         System.out.println("annimal : " + profilAstral.getAnimalTotem() + "\n");
         System.out.println("couleur : " + profilAstral.getCouleurPorteBonheur() + "\n");
