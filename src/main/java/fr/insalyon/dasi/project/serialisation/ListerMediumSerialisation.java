@@ -32,6 +32,7 @@ public class ListerMediumSerialisation extends Serialisation {
                 jsonMedium.addProperty("denomination", medium.getDenomination());
                 jsonMedium.addProperty("genre", medium.getGenre());
                 jsonMedium.addProperty("presentation", medium.getPresentation());
+                jsonMedium.addProperty("type", medium.getClass().getSimpleName());
 
                 jsonAllMedium.add(jsonMedium);
             }

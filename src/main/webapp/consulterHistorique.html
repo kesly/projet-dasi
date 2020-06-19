@@ -97,15 +97,9 @@ and open the template in the editor.
                             var tblHead = document.createElement('thead');
                             var tHeadR = document.createElement("tr");
                             
-                            var thc1= document.createElement("th");
-                            thc1.setAttribute('scope','col');
-                            var thc1t = document.createTextNode("Commentaire");
-                            thc1.appendChild(thc1t);
-                            tHeadR.appendChild(thc1);
-                            
                             var thc2= document.createElement("th");
                             thc2.setAttribute('scope','col');
-                            var thc2t = document.createTextNode("Medium");
+                            var thc2t = document.createTextNode("Médium");
                             thc2.appendChild(thc2t);
                             tHeadR.appendChild(thc2);
                             
@@ -123,7 +117,7 @@ and open the template in the editor.
                             
                             var thc5= document.createElement("th");
                             thc5.setAttribute('scope','col');
-                            var thc5t = document.createTextNode("Présentation du médium");
+                            var thc5t = document.createTextNode("Durée");
                             thc5.appendChild(thc5t);
                             tHeadR.appendChild(thc5);
                             
@@ -135,10 +129,6 @@ and open the template in the editor.
 
                             consultations.forEach(function (consultation) {
                                 var row = document.createElement("tr");
-                                var cell = document.createElement("td");
-                                var cellText = document.createTextNode(consultation.commentaire);
-                                cell.appendChild(cellText);
-                                row.appendChild(cell);
                                 var cell = document.createElement("td");
                                 var cellText = document.createTextNode(consultation.medium);
                                 cell.appendChild(cellText);
@@ -152,7 +142,7 @@ and open the template in the editor.
                                 cell.appendChild(cellText);
                                 row.appendChild(cell);
                                 var cell = document.createElement("td");
-                                var cellText = document.createTextNode(consultation.mediumpresentation);
+                                var cellText = document.createTextNode(consultation.duree);
                                 cell.appendChild(cellText);
                                 row.appendChild(cell);
                                 tblBody.appendChild(row);

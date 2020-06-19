@@ -4,16 +4,19 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import fr.insalyon.dasi.td1.metier.modele.Client;
 import fr.insalyon.dasi.td1.metier.modele.Consultation;
-import fr.insalyon.dasi.td1.metier.modele.Medium;
-import fr.insalyon.dasi.td1.metier.modele.ProfilAstral;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class afficherHistoriqueSerialisation extends Serialisation {
 
@@ -37,15 +40,24 @@ public class afficherHistoriqueSerialisation extends Serialisation {
 
                 String commentaire = consultation.getCommentaire();
                 Date dateHeureDebut = consultation.getDateHeureDebut();
+                System.out.println("777777777777777777777777777");
+                System.out.println(dateHeureDebut.toString());
                 Date dateHeureFin = consultation.getDateHeureFin();
                 String medium = consultation.getMedium().getDenomination();
                 String mediumPresentation = consultation.getMedium().getPresentation();
-
-                if (commentaire != null) {
-                    jsonClient.addProperty("commentaire", commentaire);
-                } else {
-                    jsonClient.addProperty("commentaire", "Pas de commentaire");
+                
+                if(dateHeureDebut==null || dateHeureFin == null){
+                    break;
                 }
+                Long secondesDebut = dateHeureDebut.getTime();
+                Long secondesFin = dateHeureFin.getTime();
+                Long duree = secondesFin-secondesDebut;
+                duree=TimeUnit.MILLISECONDS.toMinutes(duree);
+                System.out.println("999999999999999999999999999");
+                System.out.println(duree);
+                jsonClient.addProperty("duree", duree.toString()+" min(s)");
+
+
                 if (dateHeureDebut != null) {
                     jsonClient.addProperty("datedebut", dateHeureDebut.toString());
                 } else {
@@ -60,11 +72,6 @@ public class afficherHistoriqueSerialisation extends Serialisation {
                     jsonClient.addProperty("medium", medium);
                 } else {
                     jsonClient.addProperty("medium", "Pas de medium");
-                }
-                if (mediumPresentation != null) {
-                    jsonClient.addProperty("mediumpresentation", mediumPresentation);
-                } else {
-                    jsonClient.addProperty("mediumpresentation", "Pas de presentation du medium");
                 }
                 consultationArray.add(jsonClient);
             }
