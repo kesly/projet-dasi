@@ -41,7 +41,8 @@ public class PropositionSerialisation extends Serialisation {
             
             container.add("medium", jsonMedium);
         }
-        
+
+        System.out.println("#######################Canard#############################");
         System.out.println(nomClient+"   "+prenomClient);
         
         if (nomClient != null && prenomClient != null) {
