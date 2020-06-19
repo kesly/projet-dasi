@@ -3,7 +3,7 @@ package fr.insalyon.dasi.project.serialisation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import fr.insalyon.dasi.td1.metier.modele.Client;
+import fr.insalyon.dasi.td1.metier.modele.Medium;
 import fr.insalyon.dasi.td1.metier.modele.ProfilAstral;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +15,7 @@ public class PropositionSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         ProfilAstral profilAstral = (ProfilAstral)request.getAttribute("profilAstral");
+        Medium medium = (Medium)request.getAttribute("medium");
 
         JsonObject container = new JsonObject();
 
@@ -27,6 +28,16 @@ public class PropositionSerialisation extends Serialisation {
             jsonClient.addProperty("signeZodiac", profilAstral.getSigneZodiac());
 
             container.add("profilAstral", jsonClient);
+        }
+        
+        if (medium != null) {
+            JsonObject jsonMedium= new JsonObject();
+            jsonMedium.addProperty("denomination", medium.getDenomination());
+            jsonMedium.addProperty("genre", medium.getGenre());
+            jsonMedium.addProperty("type", medium.getClass().getSimpleName());
+            jsonMedium.addProperty("presentation", medium.getPresentation());
+            
+            container.add("medium", jsonMedium);
         }
 
         response.setContentType("application/json;charset=UTF-8");

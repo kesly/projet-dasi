@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>votre profil astral</title>
+        <title>Bienvenue</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS only -->
@@ -18,7 +18,19 @@ and open the template in the editor.
     </head>
     <body>
         <div id="proposition" style="display: none">
-            <h1>Découvrez votre profil astral</h1>
+            <h1>Votre profil si vous l'acceptez:</h1>
+            <p>
+                Dénomination: <span id="denomination-medium"></span>
+                <br>
+                Genre : <span id="genre-medium"></span>
+                <br>
+                Type: <span id="type-medium"></span>
+                <br>
+                Presentation: <span id="presentation-medium"></span>
+            </p>
+            
+            
+            <h1>Profil astral du client: </h1>
 
             <p>
                 Signe zodiac: <span id="signe-zodiac"></span>
@@ -29,9 +41,9 @@ and open the template in the editor.
                 <br><br>
                 Animal totem: <span id="animal-totem"></span>
             </p>
-
-
-
+            
+            <input name="button" type="button" id="myButton1" onClick="accepterConsultation(); this.style.color='green'; " value="Accepter" />
+            
         </div>
         
         
@@ -53,10 +65,15 @@ and open the template in the editor.
                         console.log('Response',response); // LOG dans Console Javascript
                   
                                 var profilAstral = response.profilAstral;
+                                var medium = response.medium;                                
                                 $('#signe-zodiac').html(profilAstral.signeZodiac);
                                 $('#signe-astrologique-chinois').html(profilAstral.signeAstrologiqueChinois);
                                 $('#couleur-porte-bonheur').html(profilAstral.couleurPorteBonheur);
                                 $('#animal-totem').html(profilAstral.animalTotem);
+                                $('#denomination-medium').html(medium.denomination);
+                                $('#genre-medium').html(medium.genre);
+                                $('#type-medium').html(medium.type);
+                                $('#presentation-medium').html(medium.presentation);
                                 $('#proposition').css('display','block');
                         })
                     
@@ -70,8 +87,17 @@ and open the template in the editor.
                         });
 
             });
+            
+            
+            function accepterConsultation(){
+                document.body.style.backgroundColor = '#bef7cd';
+                setTimeout(() => {  document.body.style.backgroundColor = "white"; }, 200);
+                $('#proposition').css('display','none');
+                alert("Consultation accepté, préparez vous à l'appel du client");
+                
+           }
         </script>
-        
-        
+
+
     </body>
 </html>
